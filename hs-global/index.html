@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- custom style -->
+    <link rel="stylesheet" href="./css/styel.css">
+    <link rel="stylesheet" href="./css/media.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+    <header class="header" id="header"></header>
+    <div id="app" class="wrapper" v-cloak v-bind:class="{'is-previous': isPreviousSlide, 'first-load': isFirstLoad}">
+        <div class="slide-wrapper" v-for="(slide, index) in slides" v-bind:class="{ active: index === currentSlide }"
+            v-bind:style="{ 'z-index': (slides.length - index), 'background-image': 'url(' + slide.bgImg + ')' }">
+            <div class="slide-inner">
+                <div class="slide-bg-text">
+                    <p>{{ slide.headlineFirstLine }}</p>
+                    <p>{{ slide.headlineSecondLine }}</p>
+                </div>
+                <div class="slide-rect-filter">
+                    <div class="slide-rect" v-bind:style="{'border-image-source': 'url(' + slide.rectImg + ')'}"></div>
+                </div>
+                <div class="slide-content">
+                    <h1 class="slide-content-text">
+                        <p>{{ slide.headlineFirstLine }}</p>
+                        <p>{{ slide.headlineSecondLine }}</p>
+                    </h1><a class="slide-content-cta">Explor Product</a>
+                </div>
+                <h2 class="slide-side-text"><span>{{ slide.sublineFirstLine }} / </span><span>{{ slide.sublineSecondLine
+                        }}</span></h2>
+            </div>
+        </div>
+        <div class="controls-container">
+            <button class="controls-button" v-for="(slide, index) in slides"
+                v-bind:class="{ active: index === currentSlide }" v-on:click="updateSlide(index)">{{
+                slide.headlineFirstLine }} {{ slide.headlineSecondLine }}</button>
+        </div>
+        <div class="pagination-container">
+            <span class="pagination-item" v-for="(slide, index) in slides"
+                v-bind:class="{ active: index === currentSlide }" v-on:click="updateSlide(index)"></span>
+        </div>
+    </div>
+    <section class="marble-section">
+        <div class="container">
+            <h2 class="section-title">MARBLE YOU'LL OBSESS OVER</h2>
+            <p class="section-subtitle">Classy, Sassy, and Built to Last-y!</p>
+
+            <div class="marble-grid">
+                <!-- Left Big Image -->
+                <div class="marble-item large">
+                    <img src="./images/home-page/img_1.jpg" alt="Dining Table" />
+                    <div class="overlay">
+                        <h3>Dining Tables</h3>
+                        <p>Pick your perfect match and let your dining space serve up serious style!</p>
+                        <a href="#" class="btn">Find Your Style</a>
+                    </div>
+                </div>
+
+                <!-- Right Grid 3 Items -->
+                <div class="marble-item">
+                    <img src="./images/home-page/img_2.jpg" alt="Coffee Table" />
+                    <div class="overlay">
+                        <h3>Coffee Tables</h3>
+                        <p>Sleek, sturdy, oh-so-sophisticated. Meet the centerpieces your living room was waiting for!
+                        </p>
+                        <a href="#" class="btn">Dive in</a>
+                    </div>
+                </div>
+
+                <div class="marble-item">
+                    <img src="./images/home-page/img_3.jpg" alt="Side Table" />
+                    <div class="overlay">
+                        <h3>Side Tables</h3>
+                        <p>A little table with a whole lot of personality!</p>
+                        <a href="#" class="btn">Dive in</a>
+                    </div>
+                </div>
+
+                <div class="marble-item">
+                    <img src="./images/home-page/img_4.jpg" alt="Console Table" />
+                    <div class="overlay">
+                        <h3>Console Tables</h3>
+                        <p>Why blend in when you can stand out in stone!</p>
+                        <a href="#" class="btn">Dive in</a>
+                    </div>
+                </div>
+
+                <div class="marble-item">
+                    <img src="./images/home-page/img_4.jpg" alt="Console Table" />
+                    <div class="overlay">
+                        <h3>Console Tables</h3>
+                        <p>Why blend in when you can stand out in stone!</p>
+                        <a href="#" class="btn">Dive in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer_main" id="footer"></footer>
+</body>
+<!-- custom script -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+<script src="./js/custom.js"></script>
+
+</html>
